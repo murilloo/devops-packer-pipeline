@@ -2,11 +2,15 @@
   copy:
     src: ./files/container.json
     dest: /home/packer/container.json
+    owner: packer
+    group: packer
 
 - name: copy container customization for demo
   copy:
     src: ./files/custom.yml
     dest: /home/packer/custom.yml
+    owner: packer
+    group: packer
 
 - name: validates packer container definition
   become_user: packer
