@@ -8,8 +8,14 @@
     src: ./files/custom.yml
     dest: /home/packer/custom.yml
 
-- name: validates packer.json
+- name: validates packer container definition
   become_user: packer
   command: /usr/local/bin/packer validate /home/packer/container.json
+  args:
+    chdir: /home/packer
+
+- name: build packer container definition
+  become_user: packer
+  command: /usr/local/bin/packer build /home/packer/container.json
   args:
     chdir: /home/packer

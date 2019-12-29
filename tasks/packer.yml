@@ -21,8 +21,8 @@
     dest: /usr/local/bin
     remote_src: yes
 
-- name: add packer user for demo 
+- name: add packer user to docker group 
   user:
     name: packer
-    group: wheel
+    group: docker
     state: present
