@@ -4,7 +4,7 @@
         "image": "debian:jessie-slim",
         "commit": true,
         "changes": [
-            "LABEL=murilloo@gmail.com"
+	    "LABEL version=1.0"
         ]
     }],
 
@@ -12,5 +12,11 @@
         "type": "ansible",
         "user": "root",
         "playbook_file": "custom.yml"
-    }]
+    }],
+
+    "post-processors": [[ {
+        "type": "docker-tag",
+        "repository": "murillo-labs/devops-packer-pipeline/demo",
+        "tag": "latest"
+    } ]]
 }

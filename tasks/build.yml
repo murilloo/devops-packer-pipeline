@@ -3,14 +3,14 @@
     src: ./files/container.json
     dest: /home/packer/container.json
     owner: packer
-    group: packer
+    group: docker
 
 - name: copy container customization for demo
   copy:
     src: ./files/custom.yml
     dest: /home/packer/custom.yml
     owner: packer
-    group: packer
+    group: docker
 
 - name: validates packer container definition
   become_user: packer
