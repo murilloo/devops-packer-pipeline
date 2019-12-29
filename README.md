@@ -7,7 +7,7 @@ Example pipeline using Vagrant for provisioning a VM and to install Docker and P
 
 ## Goals
 - Create a Docker image using Packer *without* Dockerfile
-- Run customization on the image using Ansible
+- Run customization on the image using *Ansible*
 
 ## Running
 ```
