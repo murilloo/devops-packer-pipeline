@@ -1,0 +1,16 @@
+{
+    "builders": [{
+        "type": "docker",
+        "image": "debian:jessie-slim",
+        "commit": true,
+        "changes": [
+            "LABEL=murilloo@gmail.com"
+        ]
+    }],
+
+    "provisioners": [{
+        "type": "ansible",
+        "user": "root",
+        "playbook_file": "custom.yml"
+    }]
+}
