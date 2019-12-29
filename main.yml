@@ -3,4 +3,4 @@
   tasks:
     - import_tasks: "tasks/docker.yml"
     - import_tasks: "tasks/packer.yml"
-    - import_tasks: "tasks/demo.yml"
+    - import_tasks: "tasks/build.yml"
