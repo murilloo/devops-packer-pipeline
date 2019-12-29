@@ -1,0 +1,44 @@
+- name: install basic packages
+  yum:
+    name:
+      - unzip
+      - ansible
+    state: latest
+
+- name: remove packer binary from crackerlibs
+  file:
+    path: /usr/sbin/packer
+    state: absent
+
+- name: download packer
+  get_url:
+    url: https://releases.hashicorp.com/packer/1.5.1/packer_1.5.1_linux_amd64.zip
+    dest: /tmp/packer_1.5.1_linux_amd64.zip
+
+- name: extract packer
+  unarchive:
+    src: /tmp/packer_1.5.1_linux_amd64.zip
+    dest: /usr/local/bin
+    remote_src: yes
+
+- name: add packer user for demo 
+  user:
+    name: packer
+    group: wheel
+    state: present
+
+- name: copy container definition for packer
+  copy:
+    src: ./files/container.json
+    dest: /home/packer/container.json
+
+- name: copy container customization for demo
+  copy:
+    src: ./files/custom.yml
+    dest: /home/packer/custom.yml
+
+- name: validates packer.json
+  become_user: packer
+  command: /usr/local/bin/packer validate /home/packer/container.json
+  args:
+    chdir: /home/packer

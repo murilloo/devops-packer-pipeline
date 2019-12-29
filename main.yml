@@ -1,0 +1,5 @@
+- hosts: all
+  become: yes
+  tasks:
+    - import_tasks: "tasks/docker.yml"
+    - import_tasks: "tasks/packer.yml"
