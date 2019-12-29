@@ -26,19 +26,3 @@
     name: packer
     group: wheel
     state: present
-
-- name: copy container definition for packer
-  copy:
-    src: ./files/container.json
-    dest: /home/packer/container.json
-
-- name: copy container customization for demo
-  copy:
-    src: ./files/custom.yml
-    dest: /home/packer/custom.yml
-
-- name: validates packer.json
-  become_user: packer
-  command: /usr/local/bin/packer validate /home/packer/container.json
-  args:
-    chdir: /home/packer
