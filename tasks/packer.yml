@@ -2,9 +2,15 @@
   yum:
     name:
       - unzip
-      - ansible
+      - centos-release-ansible-27.noarch
     state: latest
 
+- name: install ansible
+  yum:
+    name:
+      - ansible
+    state: present
+    
 - name: remove packer binary from crackerlibs
   file:
     path: /usr/sbin/packer
